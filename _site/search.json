@@ -1,0 +1,23 @@
+[
+  {
+    "objectID": "posts/safety-estimand/index.html",
+    "href": "posts/safety-estimand/index.html",
+    "title": "Safety Estimand",
+    "section": "",
+    "text": "The concept of a safety estimand is gaining attention as researchers increasingly consider intercurrent events in the analysis of clinical trial safety data. In oncology trials, key intercurrent events include early treatment discontinuations due to inefficacy and intolerable toxicities, which often vary significantly between treatment groups. Employing various strategies to address these events effectively answers distinct clinical questions.\n\nHypothetical strategy: what is the increased risk of experiencing an adverse event (AE) for patients on experimental treatment versus comparator treatment without discontinuing?\nPrincipal stratum strategy: what is the increased risk of experiencing an AE for patients on experimental treatment vs. comparator treatment within the patient subgroup that would not discontinue?"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this blog"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Safety Analysis Blog",
+    "section": "",
+    "text": "Safety Estimand\n\n\n\n\n\n\nsafety\n\n\nstatistics\n\n\nestimand\n\n\n\n\n\n\n\n\n\nMay 8, 2025\n\n\nWei Wang\n\n\n\n\n\n\nNo matching items"
+  }
+]
