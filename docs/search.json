@@ -18,6 +18,41 @@
     "href": "index.html",
     "title": "Safety Analysis Blog",
     "section": "",
-    "text": "Safety Estimand\n\n\n\n\n\n\nsafety\n\n\nstatistics\n\n\nestimand\n\n\n\n\n\n\n\n\n\nMay 8, 2025\n\n\nWei Wang\n\n\n\n\n\n\nNo matching items"
+    "text": "Intercurrent Events\n\n\n\n\n\n\n\nintercurrent event\n\n\nstatistics\n\n\n\n\n\n\n\n\n\n\n\nJun 5, 2025\n\n\nYujing Gao\n\n\n\n\n\n\n  \n\n\n\n\nSafety Estimand\n\n\n\n\n\n\n\nsafety\n\n\nstatistics\n\n\nestimand\n\n\n\n\n\n\n\n\n\n\n\nMay 8, 2025\n\n\nWei Wang\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/Intercurrent_event/index.html",
+    "href": "posts/Intercurrent_event/index.html",
+    "title": "Intercurrent Events",
+    "section": "",
+    "text": "The general introduction of estimand framework includes four parts:\n\nTrial Objective\nEstimand\nMain Estimator\nMain Estimate\n\nAn estimand is a precise description of the treatment effect reflecting the clinical question posed by a given clinical trial objective, via specifying five attributes: Population, Treatment, Endpoint, Population-level Summary, Intercurrent Events.\nThe intercurrent event is an event that occurs after treatment initiation and affects either the interpretation or existence of the measurements associated with the clinical outcome.\nThere are five strategies (page 101-118 of ICH E9) to deal with intercurrent events: treatment policy, hypothetical, composite variable, while on treatment, principal stratum."
+  },
+  {
+    "objectID": "posts/Intercurrent_event/index.html#the-general-introduction-of-estimand-framework",
+    "href": "posts/Intercurrent_event/index.html#the-general-introduction-of-estimand-framework",
+    "title": "Intercurrent Events",
+    "section": "",
+    "text": "The general introduction of estimand framework includes four parts:\n\nTrial Objective\nEstimand\nMain Estimator\nMain Estimate\n\nAn estimand is a precise description of the treatment effect reflecting the clinical question posed by a given clinical trial objective, via specifying five attributes: Population, Treatment, Endpoint, Population-level Summary, Intercurrent Events.\nThe intercurrent event is an event that occurs after treatment initiation and affects either the interpretation or existence of the measurements associated with the clinical outcome.\nThere are five strategies (page 101-118 of ICH E9) to deal with intercurrent events: treatment policy, hypothetical, composite variable, while on treatment, principal stratum."
+  },
+  {
+    "objectID": "posts/Intercurrent_event/index.html#the-five-strategies",
+    "href": "posts/Intercurrent_event/index.html#the-five-strategies",
+    "title": "Intercurrent Events",
+    "section": "2. The Five Strategies",
+    "text": "2. The Five Strategies\n\n2.1 Treatment Policy\nThe treatment policy strategy includes all post-randomization data, regardless of the intercurrent events. In this approach, the primary analysis treats the occurrence of intercurrent events as part of the real-world scenario. Thus, data is collected and analyzed as if all patients followed the initial treatment assignment, irrespective of deviations. (Intention to treat - ITT)\nExample: A clinical trial where patients switch to a different medication due to adverse effects, but all data (pre- and post-switch) are included in the primary analysis.\n\n\n\n\n\n\n\n2.2 Hypothetical\nThe hypothetical strategy considers what the outcome would have been if the intercurrent event had not occurred. This strategy relies on assumptions to model the data based on a scenario where patients had continued as initially intended, disregarding the actual intercurrent events.\nExample: Estimating the effect of a drug assuming that all patients remained on the assigned treatment without any dropouts or additional medications.\nThe hypothetical scenario should consider reasonable situations, e.g. a scenario where a toxic medicine is considered to be non-toxic is not usually relevant for decision making.\n\n\n\n\n\n\n\n2.3 Composite Variable\nIn the composite variable strategy, the intercurrent event is integrated into the outcome itself, redefining it as part of a combined endpoint. This method allows for a new outcome that includes both the clinical endpoint and the intercurrent event, allowing analyses to capture their joint effect.\nExample: For a heart disease trial, combining hospitalization and mortality as a composite endpoint, rather than separating them, captures the total adverse outcomes.\n\n\n\n\n\n\n\n2.4 While-on-Treatment\nThe while-on-treatment strategy (also known as the on-treatment strategy) restricts analysis to data collected up until the occurrence of the intercurrent event. Once the intercurrent event occurs, further data is excluded from the analysis. This approach only considers the efficacy of the treatment while patients are actively taking it.\nExample: Including data from patients only while they adhere to the medication and excluding data collected after discontinuation or switch to another treatment.\n\n\n\n\n\n\n\n2.5 Principal Stratum\nThe principal stratum strategy analyzes only a specific subset of patients defined by their response to the intercurrent event, such as those who would not experience the event regardless of the treatment they received. This strategy requires assumptions about which patients would fall into this subset and generally involves a more complex statistical model.\nExample: In a study where some patients are likely to need additional therapy, the analysis might focus only on those who would not require additional therapy regardless of the treatment arm they are in."
+  },
+  {
+    "objectID": "posts/Intercurrent_event/index.html#a-specific-example-need-to-change-for-safety-example",
+    "href": "posts/Intercurrent_event/index.html#a-specific-example-need-to-change-for-safety-example",
+    "title": "Intercurrent Events",
+    "section": "3. A Specific Example (need to change for safety example)",
+    "text": "3. A Specific Example (need to change for safety example)\nPrimary Estimand: to assess the immunogenicity of new vaccine (V1) as compared to old vaccine (V0) in healthy population who complete the vaccine regimen and do not experience events that could affect the immune response to vaccination."
+  },
+  {
+    "objectID": "posts/Intercurrent_event/index.html#principal-stratification-method",
+    "href": "posts/Intercurrent_event/index.html#principal-stratification-method",
+    "title": "Intercurrent Events",
+    "section": "4. Principal Stratification Method",
+    "text": "4. Principal Stratification Method\nWe first introduce the potential outcome framework for this method."
   }
 ]

@@ -1,0 +1,90 @@
+---
+title: "Intercurrent Events"
+author: "Yujing Gao"
+date: "2025-06-05"
+categories: [intercurrent event, statistics]
+---
+
+## 1. The General Introduction of Estimand Framework
+
+The general introduction of estimand framework includes four parts:
+
+-   Trial Objective
+
+-   Estimand
+
+-   Main Estimator
+
+-   Main Estimate
+
+An **estimand** is a precise description of the treatment effect reflecting the clinical question posed by a given clinical trial objective, via specifying five attributes: Population, Treatment, Endpoint, Population-level Summary, Intercurrent Events.
+
+The **intercurrent event** is an event that occurs after treatment initiation and affects either the interpretation or existence of the measurements associated with the clinical outcome.
+
+There are **five strategies (page 101-118 of ICH E9)** to deal with intercurrent events: treatment policy, hypothetical, composite variable, while on treatment, principal stratum.
+
+## 2. The Five Strategies
+
+### 2.1 Treatment Policy
+
+The treatment policy strategy includes all post-randomization data, regardless of the intercurrent events. In this approach, the primary analysis treats the occurrence of intercurrent events as part of the real-world scenario. Thus, data is collected and analyzed as if all patients followed the initial treatment assignment, irrespective of deviations. (Intention to treat - ITT)
+
+Example: A clinical trial where patients switch to a different medication due to adverse effects, but all data (pre- and post-switch) are included in the primary analysis.
+
+```{r stg1, message=FALSE, warning=FALSE, paged.print=FALSE, eval = T, echo = F, include = T}
+knitr::include_graphics("stg1.png")
+```
+
+### 2.2 Hypothetical
+
+The hypothetical strategy considers what the outcome would have been if the intercurrent event had not occurred. This strategy relies on assumptions to model the data based on a scenario where patients had continued as initially intended, disregarding the actual intercurrent events.
+
+Example: Estimating the effect of a drug assuming that all patients remained on the assigned treatment without any dropouts or additional medications.
+
+The hypothetical scenario should consider reasonable situations, e.g. a scenario where a toxic medicine is considered to be non-toxic is not usually relevant for decision making.
+
+```{r stg2, message=FALSE, warning=FALSE, paged.print=FALSE, eval = T, echo = F, include = T}
+knitr::include_graphics("stg2.png")
+```
+
+### 2.3 Composite Variable
+
+In the composite variable strategy, the intercurrent event is integrated into the outcome itself, redefining it as part of a combined endpoint. This method allows for a new outcome that includes both the clinical endpoint and the intercurrent event, allowing analyses to capture their joint effect.
+
+Example: For a heart disease trial, combining hospitalization and mortality as a composite endpoint, rather than separating them, captures the total adverse outcomes.
+
+```{r stg3, message=FALSE, warning=FALSE, paged.print=FALSE, eval = T, echo = F, include = T}
+knitr::include_graphics("stg3.png")
+```
+
+### 2.4 While-on-Treatment
+
+The while-on-treatment strategy (also known as the on-treatment strategy) restricts analysis to data collected up until the occurrence of the intercurrent event. Once the intercurrent event occurs, further data is excluded from the analysis. This approach only considers the efficacy of the treatment while patients are actively taking it.
+
+Example: Including data from patients only while they adhere to the medication and excluding data collected after discontinuation or switch to another treatment.
+
+```{r stg4, message=FALSE, warning=FALSE, paged.print=FALSE, eval = T, echo = F, include = T}
+knitr::include_graphics("stg4.png")
+```
+
+### 2.5 Principal Stratum
+
+The principal stratum strategy analyzes only a specific subset of patients defined by their response to the intercurrent event, such as those who would not experience the event regardless of the treatment they received. This strategy requires assumptions about which patients would fall into this subset and generally involves a more complex statistical model.
+
+Example: In a study where some patients are likely to need additional therapy, the analysis might focus only on those who would not require additional therapy regardless of the treatment arm they are in.
+
+```{r stg5, message=FALSE, warning=FALSE, paged.print=FALSE, eval = T, echo = F, include = T}
+knitr::include_graphics("stg5.png")
+```
+
+## 3. A Specific Example (need to change for safety example)
+
+Primary Estimand: to assess the immunogenicity of new vaccine (V1) as compared to old vaccine (V0) in healthy population who complete the vaccine regimen and do not experience events that could affect the immune response to vaccination.
+
+```{r vaccine_exp, message=FALSE, warning=FALSE, paged.print=FALSE, eval = T, echo = F, include = T}
+knitr::include_graphics("vaccine_exp.png")
+```
+
+## 4. Principal Stratification Method
+
+We first introduce the potential outcome framework for this method.

@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Yujing Gao">
+<meta name="dcterms.date" content="2025-06-05">
 
-<title>SafetyAnalysisBlog - Safety Analysis Blog</title>
+<title>SafetyAnalysisBlog - Intercurrent Events</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +25,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -61,50 +61,19 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">SafetyAnalysisBlog</span>
     </a>
   </div>
@@ -115,7 +84,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about.html" rel="" target="">
+    <a class="nav-link" href="../../about.html" rel="" target="">
  <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
@@ -138,122 +107,130 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">Safety Analysis Blog</h1>
-                      </div>
+    <div class="quarto-title column-body">
+      <h1 class="title">Intercurrent Events</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">intercurrent event</div>
+                <div class="quarto-category">statistics</div>
+              </div>
+                  </div>
   </div>
     
   
   <div class="quarto-title-meta">
 
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Yujing Gao </p>
+            </div>
+    </div>
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">June 5, 2025</p>
+      </div>
+    </div>
     
       
     </div>
     
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div><div class="category" data-category="estimand">estimand <span class="quarto-category-count">(1)</span></div><div class="category" data-category="intercurrent event">intercurrent event <span class="quarto-category-count">(1)</span></div><div class="category" data-category="safety">safety <span class="quarto-category-count">(1)</span></div><div class="category" data-category="statistics">statistics <span class="quarto-category-count">(2)</span></div></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
+<section id="the-general-introduction-of-estimand-framework" class="level2">
+<h2 class="anchored" data-anchor-id="the-general-introduction-of-estimand-framework">1. The General Introduction of Estimand Framework</h2>
+<p>The general introduction of estimand framework includes four parts:</p>
+<ul>
+<li><p>Trial Objective</p></li>
+<li><p>Estimand</p></li>
+<li><p>Main Estimator</p></li>
+<li><p>Main Estimate</p></li>
+</ul>
+<p>An <strong>estimand</strong> is a precise description of the treatment effect reflecting the clinical question posed by a given clinical trial objective, via specifying five attributes: Population, Treatment, Endpoint, Population-level Summary, Intercurrent Events.</p>
+<p>The <strong>intercurrent event</strong> is an event that occurs after treatment initiation and affects either the interpretation or existence of the measurements associated with the clinical outcome.</p>
+<p>There are <strong>five strategies (page 101-118 of ICH E9)</strong> to deal with intercurrent events: treatment policy, hypothetical, composite variable, while on treatment, principal stratum.</p>
+</section>
+<section id="the-five-strategies" class="level2">
+<h2 class="anchored" data-anchor-id="the-five-strategies">2. The Five Strategies</h2>
+<section id="treatment-policy" class="level3">
+<h3 class="anchored" data-anchor-id="treatment-policy">2.1 Treatment Policy</h3>
+<p>The treatment policy strategy includes all post-randomization data, regardless of the intercurrent events. In this approach, the primary analysis treats the occurrence of intercurrent events as part of the real-world scenario. Thus, data is collected and analyzed as if all patients followed the initial treatment assignment, irrespective of deviations. (Intention to treat - ITT)</p>
+<p>Example: A clinical trial where patients switch to a different medication due to adverse effects, but all data (pre- and post-switch) are included in the primary analysis.</p>
+<div class="cell" data-paged.print="false">
+<div class="cell-output-display">
+<p><img src="stg1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="hypothetical" class="level3">
+<h3 class="anchored" data-anchor-id="hypothetical">2.2 Hypothetical</h3>
+<p>The hypothetical strategy considers what the outcome would have been if the intercurrent event had not occurred. This strategy relies on assumptions to model the data based on a scenario where patients had continued as initially intended, disregarding the actual intercurrent events.</p>
+<p>Example: Estimating the effect of a drug assuming that all patients remained on the assigned treatment without any dropouts or additional medications.</p>
+<p>The hypothetical scenario should consider reasonable situations, e.g.&nbsp;a scenario where a toxic medicine is considered to be non-toxic is not usually relevant for decision making.</p>
+<div class="cell" data-paged.print="false">
+<div class="cell-output-display">
+<p><img src="stg2.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="composite-variable" class="level3">
+<h3 class="anchored" data-anchor-id="composite-variable">2.3 Composite Variable</h3>
+<p>In the composite variable strategy, the intercurrent event is integrated into the outcome itself, redefining it as part of a combined endpoint. This method allows for a new outcome that includes both the clinical endpoint and the intercurrent event, allowing analyses to capture their joint effect.</p>
+<p>Example: For a heart disease trial, combining hospitalization and mortality as a composite endpoint, rather than separating them, captures the total adverse outcomes.</p>
+<div class="cell" data-paged.print="false">
+<div class="cell-output-display">
+<p><img src="stg3.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="while-on-treatment" class="level3">
+<h3 class="anchored" data-anchor-id="while-on-treatment">2.4 While-on-Treatment</h3>
+<p>The while-on-treatment strategy (also known as the on-treatment strategy) restricts analysis to data collected up until the occurrence of the intercurrent event. Once the intercurrent event occurs, further data is excluded from the analysis. This approach only considers the efficacy of the treatment while patients are actively taking it.</p>
+<p>Example: Including data from patients only while they adhere to the medication and excluding data collected after discontinuation or switch to another treatment.</p>
+<div class="cell" data-paged.print="false">
+<div class="cell-output-display">
+<p><img src="stg4.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="principal-stratum" class="level3">
+<h3 class="anchored" data-anchor-id="principal-stratum">2.5 Principal Stratum</h3>
+<p>The principal stratum strategy analyzes only a specific subset of patients defined by their response to the intercurrent event, such as those who would not experience the event regardless of the treatment they received. This strategy requires assumptions about which patients would fall into this subset and generally involves a more complex statistical model.</p>
+<p>Example: In a study where some patients are likely to need additional therapy, the analysis might focus only on those who would not require additional therapy regardless of the treatment arm they are in.</p>
+<div class="cell" data-paged.print="false">
+<div class="cell-output-display">
+<p><img src="stg5.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="a-specific-example-need-to-change-for-safety-example" class="level2">
+<h2 class="anchored" data-anchor-id="a-specific-example-need-to-change-for-safety-example">3. A Specific Example (need to change for safety example)</h2>
+<p>Primary Estimand: to assess the immunogenicity of new vaccine (V1) as compared to old vaccine (V0) in healthy population who complete the vaccine regimen and do not experience events that could affect the immune response to vaccination.</p>
+<div class="cell" data-paged.print="false">
+<div class="cell-output-display">
+<p><img src="vaccine_exp.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="principal-stratification-method" class="level2">
+<h2 class="anchored" data-anchor-id="principal-stratification-method">4. Principal Stratification Method</h2>
+<p>We first introduce the potential outcome framework for this method.</p>
 
 
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="intercurrent event,statistics" data-listing-date-sort="1749096000000" data-listing-file-modified-sort="1749145315792" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4">
-<div class="thumbnail">
-<p><a href="./posts/Intercurrent_event/index.html"> <p class="card-img-top"><img src="posts/Intercurrent_event/stg1.png"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
-<div class="body">
-<a href="./posts/Intercurrent_event/index.html">
-<h3 class="no-anchor listing-title">
-Intercurrent Events
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('intercurrent event'); return false;">
-intercurrent event
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('statistics'); return false;">
-statistics
-</div>
-</div>
-<a href="./posts/Intercurrent_event/index.html">
-<div class="listing-description">
-The general introduction of estimand framework includes four parts:
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/Intercurrent_event/index.html">
-<div class="listing-date">
-Jun 5, 2025
-</div>
-<div class="listing-author">
-Yujing Gao
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="safety,statistics,estimand" data-listing-date-sort="1746676800000" data-listing-file-modified-sort="1749133365592" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
-<div class="thumbnail">
-<p><a href="./posts/safety-estimand/index.html"> <img src="./posts/safety-estimand/thumbnail.jpg" class="thumbnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/safety-estimand/index.html">
-<h3 class="no-anchor listing-title">
-Safety Estimand
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('safety'); return false;">
-safety
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('statistics'); return false;">
-statistics
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('estimand'); return false;">
-estimand
-</div>
-</div>
-<a href="./posts/safety-estimand/index.html">
-<div class="listing-description">
-The concept of a safety estimand is gaining attention as researchers increasingly consider intercurrent events in the analysis of clinical trial safety data. In oncology…
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/safety-estimand/index.html">
-<div class="listing-date">
-May 8, 2025
-</div>
-<div class="listing-author">
-Wei Wang
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
