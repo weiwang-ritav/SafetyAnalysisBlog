@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Yujing Gao">
-<meta name="dcterms.date" content="2025-06-05">
+<meta name="dcterms.date" content="2025-06-16">
 
-<title>SafetyAnalysisBlog - Intercurrent Events</title>
+<title>SafetyAnalysisBlog - Basic Introduction for Causal Inference</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -62,6 +62,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -108,9 +110,9 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Intercurrent Events</h1>
+      <h1 class="title">Basic Introduction for Causal Inference</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">intercurrent event</div>
+                <div class="quarto-category">causal inference</div>
                 <div class="quarto-category">statistics</div>
               </div>
                   </div>
@@ -129,7 +131,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">June 5, 2025</p>
+        <p class="date">June 16, 2025</p>
       </div>
     </div>
     
@@ -149,85 +151,33 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="the-general-introduction-of-estimand-framework" class="level2">
 <h2 class="anchored" data-anchor-id="the-general-introduction-of-estimand-framework">1. The General Introduction of Estimand Framework</h2>
-<p>The general introduction of estimand framework includes four parts:</p>
-<ul>
-<li><p>Trial Objective</p></li>
-<li><p>Estimand</p></li>
-<li><p>Main Estimator</p></li>
-<li><p>Main Estimate</p></li>
-</ul>
-<p>An <strong>estimand</strong> is a precise description of the treatment effect reflecting the clinical question posed by a given clinical trial objective, via specifying five attributes: Population, Treatment, Endpoint, Population-level Summary, Intercurrent Events.</p>
-<p>The <strong>intercurrent event</strong> is an event that occurs after treatment initiation and affects either the interpretation or existence of the measurements associated with the clinical outcome.</p>
-<p>There are <strong>five strategies (page 101-118 of ICH E9)</strong> to deal with intercurrent events: treatment policy, hypothetical, composite variable, while on treatment, principal stratum.</p>
 </section>
-<section id="the-five-strategies" class="level2">
-<h2 class="anchored" data-anchor-id="the-five-strategies">2. The Five Strategies</h2>
-<section id="treatment-policy" class="level3">
-<h3 class="anchored" data-anchor-id="treatment-policy">2.1 Treatment Policy</h3>
-<p>The treatment policy strategy includes all post-randomization data, regardless of the intercurrent events. In this approach, the primary analysis treats the occurrence of intercurrent events as part of the real-world scenario. Thus, data is collected and analyzed as if all patients followed the initial treatment assignment, irrespective of deviations. (Intention to treat - ITT)</p>
-<p>Example: A clinical trial where patients switch to a different medication due to adverse effects, but all data (pre- and post-switch) are included in the primary analysis.</p>
-<div class="cell" data-paged.print="false">
-<div class="cell-output-display">
-<p><img src="stg1.png" class="img-fluid"></p>
-</div>
-</div>
-</section>
-<section id="hypothetical" class="level3">
-<h3 class="anchored" data-anchor-id="hypothetical">2.2 Hypothetical</h3>
-<p>The hypothetical strategy considers what the outcome would have been if the intercurrent event had not occurred. This strategy relies on assumptions to model the data based on a scenario where patients had continued as initially intended, disregarding the actual intercurrent events.</p>
-<p>Example: Estimating the effect of a drug assuming that all patients remained on the assigned treatment without any dropouts or additional medications.</p>
-<p>The hypothetical scenario should consider reasonable situations, e.g.&nbsp;a scenario where a toxic medicine is considered to be non-toxic is not usually relevant for decision making.</p>
-<div class="cell" data-paged.print="false">
-<div class="cell-output-display">
-<p><img src="stg2.png" class="img-fluid"></p>
-</div>
-</div>
-</section>
-<section id="composite-variable" class="level3">
-<h3 class="anchored" data-anchor-id="composite-variable">2.3 Composite Variable</h3>
-<p>In the composite variable strategy, the intercurrent event is integrated into the outcome itself, redefining it as part of a combined endpoint. This method allows for a new outcome that includes both the clinical endpoint and the intercurrent event, allowing analyses to capture their joint effect.</p>
-<p>Example: For a heart disease trial, combining hospitalization and mortality as a composite endpoint, rather than separating them, captures the total adverse outcomes.</p>
-<div class="cell" data-paged.print="false">
-<div class="cell-output-display">
-<p><img src="stg3.png" class="img-fluid"></p>
-</div>
-</div>
-</section>
-<section id="while-on-treatment" class="level3">
-<h3 class="anchored" data-anchor-id="while-on-treatment">2.4 While-on-Treatment</h3>
-<p>The while-on-treatment strategy (also known as the on-treatment strategy) restricts analysis to data collected up until the occurrence of the intercurrent event. Once the intercurrent event occurs, further data is excluded from the analysis. This approach only considers the efficacy of the treatment while patients are actively taking it.</p>
-<p>Example: Including data from patients only while they adhere to the medication and excluding data collected after discontinuation or switch to another treatment.</p>
-<div class="cell" data-paged.print="false">
-<div class="cell-output-display">
-<p><img src="stg4.png" class="img-fluid"></p>
-</div>
-</div>
-</section>
-<section id="principal-stratum" class="level3">
-<h3 class="anchored" data-anchor-id="principal-stratum">2.5 Principal Stratum</h3>
-<p>The principal stratum strategy analyzes only a specific subset of patients defined by their response to the intercurrent event, such as those who would not experience the event regardless of the treatment they received. This strategy requires assumptions about which patients would fall into this subset and generally involves a more complex statistical model.</p>
-<p>Example: In a study where some patients are likely to need additional therapy, the analysis might focus only on those who would not require additional therapy regardless of the treatment arm they are in.</p>
-<div class="cell" data-paged.print="false">
-<div class="cell-output-display">
-<p><img src="stg5.png" class="img-fluid"></p>
-</div>
-</div>
-</section>
-</section>
-<section id="an-simple-example" class="level2">
-<h2 class="anchored" data-anchor-id="an-simple-example">3. An Simple Example</h2>
-<p>Primary Estimand: to assess the outcome of new medicine (treatment group) as compared to old medicine (control group) in defined population who complete the treatment regimen.</p>
-<div class="cell" data-paged.print="false">
-<div class="cell-output-display">
-<p><img src="simple_exp.png" class="img-fluid"></p>
-</div>
-</div>
-</section>
-<section id="principal-stratification-method" class="level2">
-<h2 class="anchored" data-anchor-id="principal-stratification-method">4. Principal Stratification Method</h2>
-<p>We first introduce the potential outcome framework for this method.</p>
+<section id="potential-outcome-model" class="level2">
+<h2 class="anchored" data-anchor-id="potential-outcome-model">2. Potential Outcome Model</h2>
+<section id="definition-of-potential-outcomes-and-causal-effects" class="level3">
+<h3 class="anchored" data-anchor-id="definition-of-potential-outcomes-and-causal-effects">2.1 Definition of Potential Outcomes and Causal Effects</h3>
+<p>The correlation between two variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> can be represented using the join distribution of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>. For example, the Pearson correlation coefficient is expressed as <span class="math inline">\(\rho(X,Y) = \sigma_{xy}/\sigma_{x}\sigma_{y}\)</span>, where $ _{xy}$ is the covariance between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, and <span class="math inline">\(\sigma_{x}, \sigma_{y}\)</span> are the standard deviations of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, respectively. But how can we formally express the causal effect between X and Y? Using the joint distribution of the observed variables X and Y does not allow us to clearly define causal effects.</p>
+<p>Statisticians have used the potential outcome model to formalize the definition of causal effects. Using this framework, Neyman (1923) provided a mathematical definition of causal effects for experimental studies, and Rubin (1974) extended this definition to observational studies. The potential outcome model typically requires the Stable Unit Treatment Value Assumption (SUTVA): each individual’s potential outcomes are unaffected by the treatment assignments of others, and each individual has a well-defined outcome under each possible treatment. See Rubin (1980) for a detailed discussion. Consider a binary treatment or exposure variable T, where T = 1 denotes the treatment group and T = 0 denotes the control group. Let <span class="math inline">\(Y(t)\)</span> denote the outcome under the treatment assignment <span class="math inline">\(T=t\)</span>, which is called the <strong>potential outcome</strong>. For each individual, the observed outcome variable Y can be written as <span class="math inline">\(Y = TY(1) + (1-T) Y(0)\)</span>. The SUTVA assumption means that the outcome is determined only by one’s own treatment and not by others’. However, this assumption may not hold in real-world settings. For instance, someone winning the lottery may impact their co-workers’ motivation; a friend getting a flu shot may indirectly reduce your own chance of getting infected. This assumption is one of the key limitations of the potential outcome model. Recently, some researchers have attempted to address this issue using social network methods (Athey et al., 2018; Eckles et al., 2017; Hudgens and Halloran, 2008; Liu and Hudgens, 2014; Sobel, 2006; Tchetgen and VanderWeele, 2012).</p>
+<p>Causal effects are typically defined as comparisons between an individual’s potential outcomes. The individual causal effect (ICE) for individual i is defined as:</p>
+<p><span class="math display">\[ICE_i = Y_i(1) - Y_i(0).\]</span></p>
+<p>Although the potential outcome model clearly defines individual causal effects, as Heraclitus once said: “You cannot step into the same river twice.” For each individual, we can only observe one of <span class="math inline">\(Y_i(1)\)</span> or <span class="math inline">\(Y_i(0)\)</span>, not both. Therefore, individual causal effects cannot be directly observed and must be inferred from observed data. Despite this limitation, statisticians have proposed various methods to infer individual or subgroup causal effects, usually under strong modeling assumptions. Recently, individualized treatment effects and precision medicine have focused on identifying these effects (Chakraborty and Moodie, 2013; Kleinberg and Hripcsak, 2011; Murphy, 2003; Su et al., 2012). Since we cannot observe both potential outcomes for any one person, causal inference is inherently a problem of missing data. Statisticians are often more concerned with population-level features, such as the average causal effect, which can be defined using the potential outcome framework.</p>
+<p>Statistics is concerned with the characteristics of a population. Using potential outcomes, we can also define the average causal effect for the population.</p>
+<p><strong>Definition 2.1</strong> The Average Causal Effect (ACE) for the population is defined as the expectation of the individual causal effect:</p>
+<p><span class="math display">\[ACE = E(ICE) = E[Y(1) - Y(0)] = E[Y(1)] - E[Y(0)].\]</span></p>
+<p>The average causal effect is defined as the difference between the average outcome <span class="math inline">\(E[Y(1)]\)</span> if all individuals were assigned to treatment <span class="math inline">\(T=1\)</span> and the average outcome <span class="math inline">\(E[Y(0)]\)</span> if all individuals were assigned to control <span class="math inline">\(T=0\)</span>. In practice, it is impossible to have all individuals receive treatment <span class="math inline">\(T=1\)</span> and then later receive control <span class="math inline">\(T=0\)</span>; even if this were attempted, for the same individual i, the potential outcome <span class="math inline">\(Y_i(t)\)</span> when first receiving treatment <span class="math inline">\(T=t\)</span> might differ from the potential outcome <span class="math inline">\(Y_i(t)^\prime\)</span> when receiving treatment <span class="math inline">\(T=t\)</span> later.</p>
+<p>Furthermore, one might be interested in the average causal effect within a specific subpopulation. For example, the efficacy of a certain drug might differ for different groups, such as males or females.</p>
+<p><strong>Definition 2.2</strong> Let X be a covariate. The average causal effect for the subpopulation with <span class="math inline">\(X=x\)</span> is defined as:</p>
+<p><span class="math display">\[E[Y(1) - Y(0)|X = x].\]</span></p>
+<p>Additionally, people are often concerned with the causal effect specifically for the treated group. For instance, epidemiologists might not be interested in the causal effect of smoking on the entire population, but only on the subpopulation who actually smoke.</p>
+<p><strong>Definition 2.3</strong> The Average Causal effect for the Treated (ATT) is defined as:</p>
+<p><span class="math display">\[E[Y(1) - Y(0)|T=1].\]</span> We say the average causal effect:</p>
+<p><span class="math display">\[ACE = E[Y(1) - Y(0)]\]</span> is <strong>identifiable</strong> if the ACE can be uniquely determined from the distribution <span class="math inline">\(P(T,Y,X)\)</span> of the observed variables. If the ACE is not identifiable, it means there exist at least two unequal values <span class="math inline">\(ACE \neq ACE^\prime\)</span> that are both consistent with the observed data. Identifiability is often the most challenging issue in causal inference. To achieve identifiability of causal effects, additional assumptions are typically required. Randomized experiments are the most effective method for identifying causal effects.</p>
+<!-- ```{r stg1, message=FALSE, warning=FALSE, paged.print=FALSE, eval = T, echo = F, include = T} -->
+<!-- knitr::include_graphics("stg1.png") -->
+<!-- ``` -->
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

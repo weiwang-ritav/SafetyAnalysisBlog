@@ -77,14 +77,17 @@ Example: In a study where some patients are likely to need additional therapy, t
 knitr::include_graphics("stg5.png")
 ```
 
-## 3. A Specific Example (need to change for safety example)
+## 3. An Simple Example
 
-Primary Estimand: to assess the immunogenicity of new vaccine (V1) as compared to old vaccine (V0) in healthy population who complete the vaccine regimen and do not experience events that could affect the immune response to vaccination.
+Primary Estimand: to assess the outcome of new medicine (treatment group) as compared to old medicine (control group) in defined population who complete the treatment regimen.
 
 ```{r vaccine_exp, message=FALSE, warning=FALSE, paged.print=FALSE, eval = T, echo = F, include = T}
-knitr::include_graphics("vaccine_exp.png")
+knitr::include_graphics("simple_exp.png")
 ```
 
 ## 4. Principal Stratification Method
 
 We first introduce the potential outcome framework for this method.
+
+
+
