@@ -2,7 +2,7 @@
 title: "Intercurrent Events"
 author: "Yujing Gao"
 date: "2025-06-05"
-categories: [intercurrent event, statistics]
+categories: [intercurrent event, statistics, causal inference]
 ---
 
 ## 1. The General Introduction of Estimand Framework
@@ -31,7 +31,7 @@ The treatment policy strategy includes all post-randomization data, regardless o
 
 Example: A clinical trial where patients switch to a different medication due to adverse effects, but all data (pre- and post-switch) are included in the primary analysis.
 
-```{r stg1, message=FALSE, warning=FALSE, paged.print=FALSE, eval = T, echo = F, include = T}
+```{r stg1, message=FALSE, warning=FALSE, paged.print=FALSE, eval = T, echo = F, include = T, fig.align='center'}
 knitr::include_graphics("stg1.png")
 ```
 
@@ -43,7 +43,7 @@ Example: Estimating the effect of a drug assuming that all patients remained on 
 
 The hypothetical scenario should consider reasonable situations, e.g. a scenario where a toxic medicine is considered to be non-toxic is not usually relevant for decision making.
 
-```{r stg2, message=FALSE, warning=FALSE, paged.print=FALSE, eval = T, echo = F, include = T}
+```{r stg2, message=FALSE, warning=FALSE, paged.print=FALSE, eval = T, echo = F, include = T, fig.align='center'}
 knitr::include_graphics("stg2.png")
 ```
 
@@ -53,7 +53,7 @@ In the composite variable strategy, the intercurrent event is integrated into th
 
 Example: For a heart disease trial, combining hospitalization and mortality as a composite endpoint, rather than separating them, captures the total adverse outcomes.
 
-```{r stg3, message=FALSE, warning=FALSE, paged.print=FALSE, eval = T, echo = F, include = T}
+```{r stg3, message=FALSE, warning=FALSE, paged.print=FALSE, eval = T, echo = F, include = T, fig.align='center'}
 knitr::include_graphics("stg3.png")
 ```
 
@@ -63,7 +63,7 @@ The while-on-treatment strategy (also known as the on-treatment strategy) restri
 
 Example: Including data from patients only while they adhere to the medication and excluding data collected after discontinuation or switch to another treatment.
 
-```{r stg4, message=FALSE, warning=FALSE, paged.print=FALSE, eval = T, echo = F, include = T}
+```{r stg4, message=FALSE, warning=FALSE, paged.print=FALSE, eval = T, echo = F, include = T, fig.align='center'}
 knitr::include_graphics("stg4.png")
 ```
 
@@ -73,7 +73,7 @@ The principal stratum strategy analyzes only a specific subset of patients defin
 
 Example: In a study where some patients are likely to need additional therapy, the analysis might focus only on those who would not require additional therapy regardless of the treatment arm they are in.
 
-```{r stg5, message=FALSE, warning=FALSE, paged.print=FALSE, eval = T, echo = F, include = T}
+```{r stg5, message=FALSE, warning=FALSE, paged.print=FALSE, eval = T, echo = F, include = T, fig.align='center'}
 knitr::include_graphics("stg5.png")
 ```
 
@@ -81,13 +81,155 @@ knitr::include_graphics("stg5.png")
 
 Primary Estimand: to assess the outcome of new medicine (treatment group) as compared to old medicine (control group) in defined population who complete the treatment regimen.
 
-```{r vaccine_exp, message=FALSE, warning=FALSE, paged.print=FALSE, eval = T, echo = F, include = T}
+```{r vaccine_exp, message=FALSE, warning=FALSE, paged.print=FALSE, eval = T, echo = F, include = T, fig.align='center'}
 knitr::include_graphics("simple_exp.png")
 ```
 
-## 4. Principal Stratification Method
+## 4. Principal Stratification Framework
 
-We first introduce the potential outcome framework for this method.
+### 4.1. Principal Strata
+
+Under the potential outcome framework (Rubin, 1974), each subject has potential outcomes $S(z)$ and $Y(z)$, where $z=0,1$. Frangakis and Rubin (2002) defined the principal stratification variable, $U=S(1)S(0)$, where $S(0),S(1)\in\{0,1\}$. Thus, there are four principal strata:
+
+ * $U=00$: Never-adherence
+ 
+ * $U=10$: Treatment-benefit adherence
+ 
+ * $U=01$: Control-benefit adherence
+ 
+ * $U=11$: Always-adherence
+
+
+Take $U=S(1)S(0) = 00$ Never-adherence as an example:
+
+ - $S(1) = 0$: when subject is assigned to the treatment group, she/he will not adhere to the protocol.
+ 
+ - $S(0) = 0$: when subject is assigned to the control group, she/he will not adhere to the protocol.
+
+Below we show the relationship between principal strata and the observed strata.
+
+```{r relationship, message=FALSE, warning=FALSE, paged.print=FALSE, eval = T, echo = F, include = T, fig.align='center'}
+knitr::include_graphics("relationship.png")
+```
+
+### 4.2. Principal Causal Effects (PCEs)
+
+The causal estimand here is defined as principal causal effects (PCEs):
+$$\tau_{U=S(1)S(0)} = E\{Y(1) - Y(0) | U = S(1)S(0)\},\quad S(1)S(0) = 00, 10, 11, 01.$$
+
+In Section 2's example, our interested parameter is PCE in Always-adherence strata:
+$$\tau_{11} = \tau_{U=11} = E\{Y(1) - Y(0)| U= 11\}.$$
+
+### 4.3. Per-protocol Method
+
+Here we also list the target estimand in Per-protocol method using our notation:
+$$\tau_{pp} = E(Y|Z=1,S=1) - E(Y|Z=0,S=1)$$
+
+In Section 2's example, the interested parameter in the Per-protocol method corresponding to PCE in Always-adherence strata is:
+$$\tau_{11} = \tau_{U=11} = E\{Y(1) - Y(0)| U= 11\}.$$
+
+However, $\tau_{11}$ is defined on the potential principal strata $U=S(1)S(0) = 11$, while $\tau_{pp}$ is defined on the observed strata $(Z,S)$.
+
+
+Here we can use a simple table to show the relationship between principal strata abd observed strata:
+
+```{r simple_table, message=FALSE, warning=FALSE, paged.print=FALSE, eval = T, echo = F, include = T, fig.align='center'}
+knitr::include_graphics("simple_table.png")
+```
+
+Thus, if we use the Per-protocol method to estimate $\tau_{11}$, $\widehat{\tau}_{pp}$ may not be an consistent estimator for $\tau_{11}$ since it will be confounded by two other principal strata $U = 01$ and $U=10$.
+
+
+
+
+## 5. Principal Stratification Estimation Methods
+
+### 5.1. Most Recent Principal Stratification Methods:
+
+Here we first list the most recent principal stratification methods and provide one plot to show 
+the relationship among these methods.
+
+```{r recent_method, message=FALSE, warning=FALSE, paged.print=FALSE, eval = T, echo = F, include = T, fig.align='center'}
+knitr::include_graphics("recent_method.png")
+```
+
+
+### 5.2 Identification Assumptions 
+
+ - **Assumption 1**: SUTVA (Stable Unit Treatment Value Assumption): There is no interference and no hidden variations of treatment.
+   - This assumption hold in the completely randomized trial.
+   
+ - **Assumption 2**: Treatment Ignorability: $Z\perp \{S(0), S(1), Y(0), Y(1)\}| \boldsymbol{X}$.
+ 
+   - This assumption hold in the completely randomized trial.
+   
+ - **Assumption 3**: Monotonicity: $S(1)\geq S(0)$.
+   - This rules out stratum U=01 (Control-benefit adherence).
+   - This means: when participants are assigned to the treatment group, they are more likely to adhere to protocol comparing with when participants are assigned to the control group.
+   - Under Assumption 3, the relationship table between the principal strata and the observed strata changed.
+   - Now $\tau_{pp}$ is still confounded by the principal strata $U=10$.
+   
+```{r relationship1, message=FALSE, warning=FALSE, paged.print=FALSE, eval = T, echo = F, include = T, fig.align='center'}
+knitr::include_graphics("relationship1.png")
+```
+
+ - **Assumption 4**: Principal Ignorability: 
+ $$E\{Y(1) | U=11, \boldsymbol{X}\} = E\{Y(1) | U=10, \boldsymbol{X}\} $$
+ $$E\{Y(0) | U=00, \boldsymbol{X}\} = E\{Y(0) | U=10, \boldsymbol{X}\} $$
+ 
+    - This requires that the expectations of the potential outcome do not vary across some principal strata U conditional on the covariates.
+    - Take the first formula as an example. Under Assumption 1-3, the first formula is equivalent to 
+    \begin{align*}
+    Z=1,S=1:\quad  & E\{Y(1)| U = 11, Z=1,S=1, \boldsymbol{X}\} \\
+    = &  E\{Y(1)| U = 10, Z=1, S=1, \boldsymbol{X}\}\\
+    = &  E\{Y | Z=1,S=1,\boldsymbol{X}\}.
+    \end{align*}
+    - This assumption help build an bridge to connect observed data with potential outcome. Thus, we can use observed data to estimate the principal causal effect.
+
+```{r relationship2, message=FALSE, warning=FALSE, paged.print=FALSE, eval = T, echo = F, include = T, fig.align='center'}
+knitr::include_graphics("relationship2.png")
+```
+
+### 5.3 Principal Score Methods (Ding et al.; 2017)
+```{r method1, message=FALSE, warning=FALSE, paged.print=FALSE, eval = T, echo = F, include = T, fig.align='center'}
+knitr::include_graphics("method1.png")
+```
+
+### 5.4 Multiple Robust Methods (Jiang et al.; 2017)
+
+First, we list two estimators that rely on propensity score model for Z and principal score model for S.
+```{r method2, message=FALSE, warning=FALSE, paged.print=FALSE, eval = T, echo = F, include = T, fig.align='center'}
+knitr::include_graphics("method2.png")
+```
+
+Next, we introduce two estimators that rely on outcome mean model for Y, where \texttt{tau11ref} also relies on propensity score model for Z and \texttt{tau11reg2} relies on principal score model for S.
+
+```{r method3, message=FALSE, warning=FALSE, paged.print=FALSE, eval = T, echo = F, include = T, fig.align='center'}
+knitr::include_graphics("method3.png")
+```
+
+Finally, we present the triply robust estimator, which relies on all three models: propensity score model for Z, principal score model for S and outcome mean mdoel for Y.
+
+```{r method4, message=FALSE, warning=FALSE, paged.print=FALSE, eval = T, echo = F, include = T, fig.align='center'}
+knitr::include_graphics("method4.png")
+```
+
+
+## 6. Simple Simulation
+
+
+## Reference
+
+ - D. B. Rubin. Estimating causal effects of treatments in randomized and nonrandomized
+studies. J Educ Psychol, 66(5): 688–701, 1974.
+ - C.E. Frangakis and D. B. Rubin. Principal stratification in causal inference. Biometrics, 58(1):21–29, 2002.
+ - P. Ding and J. Lu. Principal stratification analysis using principal scores. Journal of the Royal Statistical Society Series B: Statistical Methodology, 79(3):757–777, 2017.
+ - Z. Jiang, S. Yang, and P. Ding. Multiply robust estimation of causal effects under principal ignorability. Journal of the Royal Statistical Society Series B: Statistical Methodology, 84(4):1423–1445, 2022.
+
+
+
+
+
 
 
 

@@ -62,6 +62,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -112,6 +114,7 @@ ul.task-list li input[type="checkbox"] {
                                 <div class="quarto-categories">
                 <div class="quarto-category">intercurrent event</div>
                 <div class="quarto-category">statistics</div>
+                <div class="quarto-category">causal inference</div>
               </div>
                   </div>
   </div>
@@ -166,9 +169,13 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="treatment-policy">2.1 Treatment Policy</h3>
 <p>The treatment policy strategy includes all post-randomization data, regardless of the intercurrent events. In this approach, the primary analysis treats the occurrence of intercurrent events as part of the real-world scenario. Thus, data is collected and analyzed as if all patients followed the initial treatment assignment, irrespective of deviations. (Intention to treat - ITT)</p>
 <p>Example: A clinical trial where patients switch to a different medication due to adverse effects, but all data (pre- and post-switch) are included in the primary analysis.</p>
-<div class="cell" data-paged.print="false">
+<div class="cell" data-layout-align="center" data-paged.print="false">
 <div class="cell-output-display">
-<p><img src="stg1.png" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="stg1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -177,9 +184,13 @@ ul.task-list li input[type="checkbox"] {
 <p>The hypothetical strategy considers what the outcome would have been if the intercurrent event had not occurred. This strategy relies on assumptions to model the data based on a scenario where patients had continued as initially intended, disregarding the actual intercurrent events.</p>
 <p>Example: Estimating the effect of a drug assuming that all patients remained on the assigned treatment without any dropouts or additional medications.</p>
 <p>The hypothetical scenario should consider reasonable situations, e.g.&nbsp;a scenario where a toxic medicine is considered to be non-toxic is not usually relevant for decision making.</p>
-<div class="cell" data-paged.print="false">
+<div class="cell" data-layout-align="center" data-paged.print="false">
 <div class="cell-output-display">
-<p><img src="stg2.png" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="stg2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -187,9 +198,13 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="composite-variable">2.3 Composite Variable</h3>
 <p>In the composite variable strategy, the intercurrent event is integrated into the outcome itself, redefining it as part of a combined endpoint. This method allows for a new outcome that includes both the clinical endpoint and the intercurrent event, allowing analyses to capture their joint effect.</p>
 <p>Example: For a heart disease trial, combining hospitalization and mortality as a composite endpoint, rather than separating them, captures the total adverse outcomes.</p>
-<div class="cell" data-paged.print="false">
+<div class="cell" data-layout-align="center" data-paged.print="false">
 <div class="cell-output-display">
-<p><img src="stg3.png" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="stg3.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -197,9 +212,13 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="while-on-treatment">2.4 While-on-Treatment</h3>
 <p>The while-on-treatment strategy (also known as the on-treatment strategy) restricts analysis to data collected up until the occurrence of the intercurrent event. Once the intercurrent event occurs, further data is excluded from the analysis. This approach only considers the efficacy of the treatment while patients are actively taking it.</p>
 <p>Example: Including data from patients only while they adhere to the medication and excluding data collected after discontinuation or switch to another treatment.</p>
-<div class="cell" data-paged.print="false">
+<div class="cell" data-layout-align="center" data-paged.print="false">
 <div class="cell-output-display">
-<p><img src="stg4.png" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="stg4.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -207,9 +226,13 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="principal-stratum">2.5 Principal Stratum</h3>
 <p>The principal stratum strategy analyzes only a specific subset of patients defined by their response to the intercurrent event, such as those who would not experience the event regardless of the treatment they received. This strategy requires assumptions about which patients would fall into this subset and generally involves a more complex statistical model.</p>
 <p>Example: In a study where some patients are likely to need additional therapy, the analysis might focus only on those who would not require additional therapy regardless of the treatment arm they are in.</p>
-<div class="cell" data-paged.print="false">
+<div class="cell" data-layout-align="center" data-paged.print="false">
 <div class="cell-output-display">
-<p><img src="stg5.png" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="stg5.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -217,15 +240,188 @@ ul.task-list li input[type="checkbox"] {
 <section id="an-simple-example" class="level2">
 <h2 class="anchored" data-anchor-id="an-simple-example">3. An Simple Example</h2>
 <p>Primary Estimand: to assess the outcome of new medicine (treatment group) as compared to old medicine (control group) in defined population who complete the treatment regimen.</p>
-<div class="cell" data-paged.print="false">
+<div class="cell" data-layout-align="center" data-paged.print="false">
 <div class="cell-output-display">
-<p><img src="simple_exp.png" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="simple_exp.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
-<section id="principal-stratification-method" class="level2">
-<h2 class="anchored" data-anchor-id="principal-stratification-method">4. Principal Stratification Method</h2>
-<p>We first introduce the potential outcome framework for this method.</p>
+<section id="principal-stratification-framework" class="level2">
+<h2 class="anchored" data-anchor-id="principal-stratification-framework">4. Principal Stratification Framework</h2>
+<section id="principal-strata" class="level3">
+<h3 class="anchored" data-anchor-id="principal-strata">4.1. Principal Strata</h3>
+<p>Under the potential outcome framework (Rubin, 1974), each subject has potential outcomes <span class="math inline">\(S(z)\)</span> and <span class="math inline">\(Y(z)\)</span>, where <span class="math inline">\(z=0,1\)</span>. Frangakis and Rubin (2002) defined the principal stratification variable, <span class="math inline">\(U=S(1)S(0)\)</span>, where <span class="math inline">\(S(0),S(1)\in\{0,1\}\)</span>. Thus, there are four principal strata:</p>
+<ul>
+<li><p><span class="math inline">\(U=00\)</span>: Never-adherence</p></li>
+<li><p><span class="math inline">\(U=10\)</span>: Treatment-benefit adherence</p></li>
+<li><p><span class="math inline">\(U=01\)</span>: Control-benefit adherence</p></li>
+<li><p><span class="math inline">\(U=11\)</span>: Always-adherence</p></li>
+</ul>
+<p>Take <span class="math inline">\(U=S(1)S(0) = 00\)</span> Never-adherence as an example:</p>
+<ul>
+<li><p><span class="math inline">\(S(1) = 0\)</span>: when subject is assigned to the treatment group, she/he will not adhere to the protocol.</p></li>
+<li><p><span class="math inline">\(S(0) = 0\)</span>: when subject is assigned to the control group, she/he will not adhere to the protocol.</p></li>
+</ul>
+<p>Below we show the relationship between principal strata and the observed strata.</p>
+<div class="cell" data-layout-align="center" data-paged.print="false">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="relationship.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="principal-causal-effects-pces" class="level3">
+<h3 class="anchored" data-anchor-id="principal-causal-effects-pces">4.2. Principal Causal Effects (PCEs)</h3>
+<p>The causal estimand here is defined as principal causal effects (PCEs): <span class="math display">\[\tau_{U=S(1)S(0)} = E\{Y(1) - Y(0) | U = S(1)S(0)\},\quad S(1)S(0) = 00, 10, 11, 01.\]</span></p>
+<p>In Section 2’s example, our interested parameter is PCE in Always-adherence strata: <span class="math display">\[\tau_{11} = \tau_{U=11} = E\{Y(1) - Y(0)| U= 11\}.\]</span></p>
+</section>
+<section id="per-protocol-method" class="level3">
+<h3 class="anchored" data-anchor-id="per-protocol-method">4.3. Per-protocol Method</h3>
+<p>Here we also list the target estimand in Per-protocol method using our notation: <span class="math display">\[\tau_{pp} = E(Y|Z=1,S=1) - E(Y|Z=0,S=1)\]</span></p>
+<p>In Section 2’s example, the interested parameter in the Per-protocol method corresponding to PCE in Always-adherence strata is: <span class="math display">\[\tau_{11} = \tau_{U=11} = E\{Y(1) - Y(0)| U= 11\}.\]</span></p>
+<p>However, <span class="math inline">\(\tau_{11}\)</span> is defined on the potential principal strata <span class="math inline">\(U=S(1)S(0) = 11\)</span>, while <span class="math inline">\(\tau_{pp}\)</span> is defined on the observed strata <span class="math inline">\((Z,S)\)</span>.</p>
+<p>Here we can use a simple table to show the relationship between principal strata abd observed strata:</p>
+<div class="cell" data-layout-align="center" data-paged.print="false">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="simple_table.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Thus, if we use the Per-protocol method to estimate <span class="math inline">\(\tau_{11}\)</span>, <span class="math inline">\(\widehat{\tau}_{pp}\)</span> may not be an consistent estimator for <span class="math inline">\(\tau_{11}\)</span> since it will be confounded by two other principal strata <span class="math inline">\(U = 01\)</span> and <span class="math inline">\(U=10\)</span>.</p>
+</section>
+</section>
+<section id="principal-stratification-estimation-methods" class="level2">
+<h2 class="anchored" data-anchor-id="principal-stratification-estimation-methods">5. Principal Stratification Estimation Methods</h2>
+<section id="most-recent-principal-stratification-methods" class="level3">
+<h3 class="anchored" data-anchor-id="most-recent-principal-stratification-methods">5.1. Most Recent Principal Stratification Methods:</h3>
+<p>Here we first list the most recent principal stratification methods and provide one plot to show the relationship among these methods.</p>
+<div class="cell" data-layout-align="center" data-paged.print="false">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="recent_method.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="identification-assumptions" class="level3">
+<h3 class="anchored" data-anchor-id="identification-assumptions">5.2 Identification Assumptions</h3>
+<ul>
+<li><p><strong>Assumption 1</strong>: SUTVA (Stable Unit Treatment Value Assumption): There is no interference and no hidden variations of treatment.</p>
+<ul>
+<li>This assumption hold in the completely randomized trial.</li>
+</ul></li>
+<li><p><strong>Assumption 2</strong>: Treatment Ignorability: <span class="math inline">\(Z\perp \{S(0), S(1), Y(0), Y(1)\}| \boldsymbol{X}\)</span>.</p>
+<ul>
+<li>This assumption hold in the completely randomized trial.</li>
+</ul></li>
+<li><p><strong>Assumption 3</strong>: Monotonicity: <span class="math inline">\(S(1)\geq S(0)\)</span>.</p>
+<ul>
+<li>This rules out stratum U=01 (Control-benefit adherence).</li>
+<li>This means: when participants are assigned to the treatment group, they are more likely to adhere to protocol comparing with when participants are assigned to the control group.</li>
+<li>Under Assumption 3, the relationship table between the principal strata and the observed strata changed.</li>
+<li>Now <span class="math inline">\(\tau_{pp}\)</span> is still confounded by the principal strata <span class="math inline">\(U=10\)</span>.</li>
+</ul></li>
+</ul>
+<div class="cell" data-layout-align="center" data-paged.print="false">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="relationship1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li><p><strong>Assumption 4</strong>: Principal Ignorability: <span class="math display">\[E\{Y(1) | U=11, \boldsymbol{X}\} = E\{Y(1) | U=10, \boldsymbol{X}\} \]</span> <span class="math display">\[E\{Y(0) | U=00, \boldsymbol{X}\} = E\{Y(0) | U=10, \boldsymbol{X}\} \]</span></p>
+<ul>
+<li>This requires that the expectations of the potential outcome do not vary across some principal strata U conditional on the covariates.</li>
+<li>Take the first formula as an example. Under Assumption 1-3, the first formula is equivalent to <span class="math display">\[\begin{align*}
+Z=1,S=1:\quad  &amp; E\{Y(1)| U = 11, Z=1,S=1, \boldsymbol{X}\} \\
+= &amp;  E\{Y(1)| U = 10, Z=1, S=1, \boldsymbol{X}\}\\
+= &amp;  E\{Y | Z=1,S=1,\boldsymbol{X}\}.
+\end{align*}\]</span></li>
+<li>This assumption help build an bridge to connect observed data with potential outcome. Thus, we can use observed data to estimate the principal causal effect.</li>
+</ul></li>
+</ul>
+<div class="cell" data-layout-align="center" data-paged.print="false">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="relationship2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="principal-score-methods-ding-et-al.-2017" class="level3">
+<h3 class="anchored" data-anchor-id="principal-score-methods-ding-et-al.-2017">5.3 Principal Score Methods (Ding et al.; 2017)</h3>
+<div class="cell" data-layout-align="center" data-paged.print="false">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="method1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="multiple-robust-methods-jiang-et-al.-2017" class="level3">
+<h3 class="anchored" data-anchor-id="multiple-robust-methods-jiang-et-al.-2017">5.4 Multiple Robust Methods (Jiang et al.; 2017)</h3>
+<p>First, we list two estimators that rely on propensity score model for Z and principal score model for S.</p>
+<div class="cell" data-layout-align="center" data-paged.print="false">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="method2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Next, we introduce two estimators that rely on outcome mean model for Y, where also relies on propensity score model for Z and relies on principal score model for S.</p>
+<div class="cell" data-layout-align="center" data-paged.print="false">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="method3.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Finally, we present the triply robust estimator, which relies on all three models: propensity score model for Z, principal score model for S and outcome mean mdoel for Y.</p>
+<div class="cell" data-layout-align="center" data-paged.print="false">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="method4.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="simple-simulation" class="level2">
+<h2 class="anchored" data-anchor-id="simple-simulation">6. Simple Simulation</h2>
+</section>
+<section id="reference" class="level2">
+<h2 class="anchored" data-anchor-id="reference">Reference</h2>
+<ul>
+<li>D. B. Rubin. Estimating causal effects of treatments in randomized and nonrandomized studies. J Educ Psychol, 66(5): 688–701, 1974.</li>
+<li>C.E. Frangakis and D. B. Rubin. Principal stratification in causal inference. Biometrics, 58(1):21–29, 2002.</li>
+<li>P. Ding and J. Lu. Principal stratification analysis using principal scores. Journal of the Royal Statistical Society Series B: Statistical Methodology, 79(3):757–777, 2017.</li>
+<li>Z. Jiang, S. Yang, and P. Ding. Multiply robust estimation of causal effects under principal ignorability. Journal of the Royal Statistical Society Series B: Statistical Methodology, 84(4):1423–1445, 2022.</li>
+</ul>
 
 
 </section>
