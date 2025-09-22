@@ -1,10 +1,11 @@
 ---
 title: "Intercurrent Events"
 author: "Yujing Gao"
-date: "2025-06-05"
+date: "2025-09-15"
 categories: [intercurrent event, statistics, causal inference]
 ---
-<div style="text-align: justify;">
+
+::: {style="text-align: justify;"}
 
 ## 1. The General Introduction of Estimand Framework
 
@@ -22,7 +23,7 @@ An **estimand** is a precise description of the treatment effect reflecting the 
 
 The **intercurrent event** is an event that occurs after treatment initiation and affects either the interpretation or existence of the measurements associated with the clinical outcome.
 
-There are **five strategies (page 101-118 of ICH E9)** to deal with intercurrent events: treatment policy, hypothetical, composite variable, while on treatment, principal stratum.
+There are **five strategies (page 101-118 of ICH E9)** to deal with intercurrent events: treatment policy, hypothetical, composite variable, while on treatment, principal stratum. We will introduce these five strategies in next Section.
 
 ## 2. The Five Strategies
 
@@ -136,7 +137,6 @@ Thus, if we use the Per-protocol method to estimate $\tau_{11}$, $\widehat{\tau}
 
 ## 5. Principal Stratification Estimation Methods
 
-
 ### 5.1 Identification Assumptions
 
 We first represent the identification assumptions for the principal causal effects (Jiang et al.; 2022).
@@ -174,7 +174,6 @@ knitr::include_graphics("relationship1.png")
 knitr::include_graphics("relationship2.png")
 ```
 
-
 ### 5.2. Most Recent Principal Stratification Methods:
 
 Under the identification assumptions listed in Section 5.1, we present the corresponding estimation methods and provide one plot to show the relationship among these methods.
@@ -189,19 +188,17 @@ Before we provide the formula of each estimation method, we first provide the fo
 
 Define:
 
-- the propensity score of $Z$ or the treatment probability given the covariates: $\pi(\boldsymbol{X}) = P(Z=1|\boldsymbol{X})$.
+-   the propensity score of $Z$ or the treatment probability given the covariates: $\pi(\boldsymbol{X}) = P(Z=1|\boldsymbol{X})$.
 
-- the probability of the intermediate variable $S$ conditional on the treatment and covariates: $p_z(\boldsymbol{X}) = P(S=1|Z=z,\boldsymbol{X})$ for $z=0,1$.
+-   the probability of the intermediate variable $S$ conditional on the treatment and covariates: $p_z(\boldsymbol{X}) = P(S=1|Z=z,\boldsymbol{X})$ for $z=0,1$.
 
-- the principal score of $S$: 
-$$
-e_{10}(\boldsymbol{X}) = p_1(\boldsymbol{X}) - p_0(\boldsymbol{X}),\quad e_{00}(\boldsymbol{X}) = 1- p_1(\boldsymbol{X}), \quad e_{11}(\boldsymbol{X}) = p_0(\boldsymbol{X}).
-$$
+-   the principal score of $S$: $$
+    e_{10}(\boldsymbol{X}) = p_1(\boldsymbol{X}) - p_0(\boldsymbol{X}),\quad e_{00}(\boldsymbol{X}) = 1- p_1(\boldsymbol{X}), \quad e_{11}(\boldsymbol{X}) = p_0(\boldsymbol{X}).
+    $$
 
-- the outcome mean within the observed group ($Z=z,S=s$): $\mu_{zs}(\boldsymbol{X}) = E(Y|Z=z, S=s,\boldsymbol{X})$ for $z,s=0,1$.
+-   the outcome mean within the observed group ($Z=z,S=s$): $\mu_{zs}(\boldsymbol{X}) = E(Y|Z=z, S=s,\boldsymbol{X})$ for $z,s=0,1$.
 
-- the marginalized probability of $S$ over the distribution of the covariates: $p_z = E\{p_z(\boldsymbol{X})\}$ for $z=0,1$.
-
+-   the marginalized probability of $S$ over the distribution of the covariates: $p_z = E\{p_z(\boldsymbol{X})\}$ for $z=0,1$.
 
 #### 5.2.1 Principal Score Methods (Ding et al.; 2017)
 
@@ -225,7 +222,7 @@ Second, we introduce two estimators that rely on the outcome mean model for Y, $
 knitr::include_graphics("method3.png")
 ```
 
-Finally, we present the multiple robust estimator, which relies on all three models: the propensity score model for Z,  $\pi(\boldsymbol{X})$; the principal score model for S, $p(\boldsymbol{X})$; the outcome mean model for Y,  $\mu(\boldsymbol{X})$.
+Finally, we present the multiple robust estimator, which relies on all three models: the propensity score model for Z, $\pi(\boldsymbol{X})$; the principal score model for S, $p(\boldsymbol{X})$; the outcome mean model for Y, $\mu(\boldsymbol{X})$.
 
 ```{r method4, message=FALSE, warning=FALSE, paged.print=FALSE, eval = T, echo = F, include = T, fig.align='center'}
 knitr::include_graphics("method4.png")
@@ -343,13 +340,12 @@ head(data_simu)
 
 ```
 
-
 ### 6.2 True Value Calculation
 
-We also provide the code for calculating the true values of both the per-protocol effect $\tau_{pp}$ and each principal causal effect $\tau_{11}$, $\tau_{10}$, $\tau_{00}$. 
+We also provide the code for calculating the true values of both the per-protocol effect $\tau_{pp}$ and each principal causal effect $\tau_{11}$, $\tau_{10}$, $\tau_{00}$.
 
-First, for the true value of the per-protocol method $\tau_{pp}$, we generate a large simulated data with sample size $10^6$ and then calculate the true value of $\tau_{pp}$ as: 
-$$\tau_{pp}^{true} = \widehat{E}\{Y|Z=1,S=1\} - \widehat{E}\{Y|Z=0,S=1\}.$$
+First, for the true value of the per-protocol method $\tau_{pp}$, we generate a large simulated data with sample size $10^6$ and then calculate the true value of $\tau_{pp}$ as: $$\tau_{pp}^{true} = \widehat{E}\{Y|Z=1,S=1\} - \widehat{E}\{Y|Z=0,S=1\}.$$
+
 ```{r true_value_pp, message = FALSE, warning = FALSE, paged.print = FALSE, eval = T, include = T}
 set.seed(123)
 data_true <- f_sim(N = 10^6)
@@ -359,32 +355,33 @@ tau_pp <- mean(filter(data_true, Z == 1, S == 1)$Y) - mean(filter(data_true, Z =
 tau_pp 
 ```
 
+Next, for the true value of the principal causal effects $\tau_{11}$, $\tau_{10}$ and $\tau_{00}$. We use the identification result in Theorem 1 provided in Jiang et al. (2022):
 
-Next, for the true value of the principal causal effects $\tau_{11}$, $\tau_{10}$ and $\tau_{00}$. We use the identification result in Theorem 1 provided in Jiang et al. (2022): 
+-   
 
-- (a) Based on the treatment probability and principal score:
+    (a) Based on the treatment probability and principal score:
 
 $$
 Always-adherence: \tau_{11}^{true} = 
  E\left\{\frac{e_{11}(\boldsymbol{X})}{ p_0} \frac{S}{p_1(\boldsymbol{X})} \frac{Z}{\pi(\boldsymbol{X})} Y\right\} - E\left\{ \frac{S}{p_0} \frac{1-Z}{1-\pi(\boldsymbol{X})} Y\right\}
 $$
 
-
 $$
 Treatment-benefit-adherence: \tau_{10}^{true} = E\left\{\frac{e_{10}(\boldsymbol{X})}{p_1-p_0} \frac{S}{p_1(\boldsymbol{X})} \frac{Z}{\pi(\boldsymbol{X})} Y \right\} -
 E\left\{\frac{e_{10}(\boldsymbol{X})}{p_1-p_0} \frac{1-S}{1-p_0(\boldsymbol{X})} \frac{1-Z}{1 - \pi(\boldsymbol{X})} Y \right\}
-$$ 
+$$
 
 $$
     Never-adherence: \tau_{00}^{true} = E\left\{\frac{1-S}{1-p_1} \frac{Z}{\pi(\boldsymbol{X})} Y \right\} - 
 E\left\{\frac{e_{00}(\boldsymbol{X})}{1-p_1}\frac{1-S}{1-p_0(\boldsymbol{X})} \frac{1-Z}{1-\pi(\boldsymbol{X})} Y \right\} 
 $$
-  
-- (b) Based on the treatment probability and outcome mean:
-$$
-Always-adherence: \tau_{11}^{true} = 
-E\left[\frac{S(1-Z)/ \{1-\pi(\boldsymbol{X})\}}{p_0} \{\mu_{10}(\boldsymbol{X}) - \mu_{00}(\boldsymbol{X})\}\right] 
-$$
+
+-   
+
+    (b) Based on the treatment probability and outcome mean: $$
+        Always-adherence: \tau_{11}^{true} = 
+        E\left[\frac{S(1-Z)/ \{1-\pi(\boldsymbol{X})\}}{p_0} \{\mu_{10}(\boldsymbol{X}) - \mu_{00}(\boldsymbol{X})\}\right] 
+        $$
 
 $$
 Treatment-benefit-adherence: \tau_{10}^{true} = 
@@ -395,11 +392,11 @@ $$
     Never-adherence: \tau_{00}^{true} = E\left[ \frac{1-SZ/\pi(\boldsymbol{X})}{1-p_1} \{\mu_{11}(\boldsymbol{X}) - \mu_{00}(\boldsymbol{X})\} \right]
 $$
 
+-   
 
-- (c) Based on the principal score and outcome mean: 
-$$
-Always-adherence: \tau_{11}^{true} = E\left[\frac{p_0(\boldsymbol{X})}{p_0} \{\mu_{11}(\boldsymbol{X}) - \mu_{01}(\boldsymbol{X})\}\right] 
-$$
+    (c) Based on the principal score and outcome mean: $$
+        Always-adherence: \tau_{11}^{true} = E\left[\frac{p_0(\boldsymbol{X})}{p_0} \{\mu_{11}(\boldsymbol{X}) - \mu_{01}(\boldsymbol{X})\}\right] 
+        $$
 
 $$
 Treatment-benefit-adherence: \tau_{10}^{true} = E\left[\frac{p_1(\boldsymbol{X}) - p_0(\boldsymbol{X}) }{p_1-p_0} \{\mu_{11}(\boldsymbol{X}) - \mu_{00}(\boldsymbol{X})\} \right]
@@ -408,8 +405,7 @@ $$
 $$
     Never-adherence: \tau_{00}^{true} = E\left[\frac{1-p_1(\boldsymbol{X})}{1-p_1} \{\mu_{10}(\boldsymbol{X}) - \mu_{00}(\boldsymbol{X})\}\right] 
 $$
-  
-  
+
 ```{r true_value_pce, message = FALSE, warning = FALSE, paged.print = FALSE, eval = T, include = T}
 ###### Calculate the true value for PCE ######
 # the true value is not stable in this strata
@@ -780,6 +776,7 @@ res_MR_00
 ```
 
 Now let's combine these 7 estimation results together.
+
 ```{r simu_est_res, message = FALSE, warning = FALSE, paged.print = FALSE, eval = T, include = T}
 
 Est_res <- data.frame(est_method = c("Ding_naive", "Ding_reg", 
@@ -794,13 +791,10 @@ Est_res <- data.frame(est_method = c("Ding_naive", "Ding_reg",
 knitr::kable(Est_res, caption = "Estimation Result")
 ```
 
-
 ## Reference
 
 -   D. B. Rubin. Estimating causal effects of treatments in randomized and nonrandomized studies. J Educ Psychol, 66(5): 688--701, 1974.
 -   C.E. Frangakis and D. B. Rubin. Principal stratification in causal inference. Biometrics, 58(1):21--29, 2002.
 -   P. Ding and J. Lu. Principal stratification analysis using principal scores. Journal of the Royal Statistical Society Series B: Statistical Methodology, 79(3):757--777, 2017.
 -   Z. Jiang, S. Yang, and P. Ding. Multiply robust estimation of causal effects under principal ignorability. Journal of the Royal Statistical Society Series B: Statistical Methodology, 84(4):1423--1445, 2022.
-
-
-</div>
+:::
