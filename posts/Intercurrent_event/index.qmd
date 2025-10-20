@@ -3,10 +3,10 @@ title: "Estimation Methods for Intercurrent Events"
 author: "Yujing Gao"
 date: "2025-09-15"
 categories: [intercurrent event, per-protocol method, causal inference, principal stratification, multiple robust]
+image: "relationship.png"
 ---
 
 ::: {style="text-align: justify;"}
-
 ## 1. The General Introduction of Estimand Framework
 
 The general introduction of estimand framework includes four parts:

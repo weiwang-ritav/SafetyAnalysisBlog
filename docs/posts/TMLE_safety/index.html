@@ -62,6 +62,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -152,21 +154,45 @@ ul.task-list li input[type="checkbox"] {
 <div style="text-align: justify;">
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">1. Introduction</h2>
-<p>The general introduction of estimand framework includes four parts:</p>
+<p>As pointed by this paper (Lendle; 2013), the health intervention a patient receives in observational studies is generally not assigned randomly but is chosen by the patient or physician based on characteristics of the patient. This paper focuses on two important questions:</p>
 <ul>
-<li>Trial Objective An <strong>estimand</strong> is a precise description of the treatment effect reflecting the clinical question posed by a given clinical trial objective, via specifying five attributes: Population, Treatment, Endpoint, Population-level Summary, Intercurrent Events.</li>
+<li><p>When is it possible to estimate the effect of some health intervention on a safety or an effectiveness outcome without bias?</p></li>
+<li><p>And if it is possible, how can we estimate the effect.</p></li>
 </ul>
+<p>To address the first question, this paper discusses the potential outcomes framework and use it to formally define a target causal parameter that they wish to estimate and briefly review conditions under which it is possible to estimate the parameter without bias.</p>
+<p>To address the second question, this paper reviews common estimation methods including a method based on the G-computation formula, inverse probability of treatment weighting (IPTW), and propensity score (PS) matching, and compare them to doubly robust (DR) methods such as augmented IPTW (AIPTW), targeted maximum likelihood estimation (TMLE) and collaborative TMLE (CTMLE), an estimator that uses a data-adaptive estimate of the PS in collaboration with the outcome regression.</p>
+<p>Then they compare methods in a real data example, a simplified version of a drug safety surveillance study to motivate our question of interest and demonstrate the estimation methods. The data set is a subset of data from Kaiser Permanente Northern California formatted according to the specification of Food and Drug Administration’s Mini-Sentinel drug safety surveillance program.</p>
+<p>In summary, the objective of this paper is to compare the performance of a targeted maximum likelihood estimator (TMLE) and a collaborative TMLE (CTMLE) to other estimators in a druf safety analysis, including a regression-based estimator, propensity score (PS)- based estimators, and an alternative doubly robust (DR) estimator in a real example and simulations.</p>
 </section>
 <section id="causal-parameter-and-identifiability" class="level2">
 <h2 class="anchored" data-anchor-id="causal-parameter-and-identifiability">2. Causal Parameter and Identifiability</h2>
-<section id="treatment-policy" class="level3">
-<h3 class="anchored" data-anchor-id="treatment-policy">2.1 Treatment Policy</h3>
-<p>The treatment policy strategy includes all post-randomization data, regardless of the intercurrent events. In this approach, the primary analysis treats the occurrence of intercurrent events as part of the real-world scenario. Thus, data is collected and analyzed as if all patients followed the initial treatment assignment, irrespective of deviations. (Intention to treat - ITT)</p>
-<p>Example: A clinical trial where patients switch to a different medication due to adverse effects, but all data (pre- and post-switch) are included in the primary analysis.</p>
-</section>
+<p>Under the potential outcome framework (Rubin; 1974), define <span class="math inline">\(Y(1)\)</span> and <span class="math inline">\(Y(0)\)</span> as potential outcomes for a patient had the patient received treatment 1 or treatment 0 (placebo), respectively. The average treatment effect (ATE) is defined as <span class="math inline">\(E[Y(1)-Y(0)]\)</span>, where <span class="math inline">\(E\)</span> denotes expectation with respect to the distribution of potential outcomes for the population of interest. For a particular patient, one of <span class="math inline">\(Y(1)\)</span> and <span class="math inline">\(Y(0)\)</span> is unobservable and is called counterfactual.</p>
+<p>Define the observed data as <span class="math inline">\(O = \{W,A,Y\}\)</span>, where <span class="math inline">\(W\)</span> represents baseline characteristics of a patient, <span class="math inline">\(A=1\)</span> if the patient receives the target treatment of interest or 0 if the patient receives the control treatment, and <span class="math inline">\(Y\)</span> is the patient’s observed outcome. And assume that we can observe <span class="math inline">\(n\)</span> independent and identically distributed copies of <span class="math inline">\(O\)</span>.</p>
+<p>To be able to estimate ATE, we need to write it as a function of the observed data distribution. If we can do this, they we say the ATE is <strong>identifible</strong>. Since the ATE depends on unobserved potential outcomes, identifiability in this paper requires the following assumption:</p>
+<ul>
+<li><p><strong>Assumption 1 [Consistency]</strong>: <span class="math inline">\(Y=AY(1) + (1-A)Y(0)\)</span>.</p>
+<ul>
+<li>This assumption means the observed outcome is the potential outcome under the treatment arm that patient actually received.</li>
+</ul></li>
+<li><p><strong>Assumption 2 [Randomization]</strong>: <span class="math inline">\(A \perp \{Y(0), Y(1)\} | W\)</span>.</p>
+<ul>
+<li>This assumption means that given a set of baseline covariates <span class="math inline">\(W\)</span>, the treatment <span class="math inline">\(A\)</span> is independence of the potential outcomes <span class="math inline">\(Y(0)\)</span> and <span class="math inline">\(Y(1)\)</span>. This is also called the “no unmeasured confounders” assumption.</li>
+</ul></li>
+<li><p><strong>Assumption 3 [Positivity]</strong>: <span class="math inline">\(0 &lt; P(A=1|W) &lt; 1\)</span> for all <span class="math inline">\(W\)</span>, where <span class="math inline">\(P\)</span> denotes probability.</p>
+<ul>
+<li>This assumption means for any value of baseline characteristics <span class="math inline">\(W\)</span>, it is possible to receive either treatment.</li>
+</ul></li>
+</ul>
+<p>Then under these assumptions, we can write <span class="math display">\[E[Y(1) - Y(0)] = E[E(Y|A=1,W) - E(Y|A=0,W)] - \psi_0.\]</span> Thus, the ATE is equal to a statistical parameter that is a function of only the observed data distribution.</p>
 </section>
 <section id="estimation" class="level2">
 <h2 class="anchored" data-anchor-id="estimation">3. Estimation</h2>
+<p>To estimate the causal effect, in addition to the randomization and positivity assumptions, we need to specify a statistical model or a set of possible probability distributions for the observed data <span class="math inline">\(O\)</span>. A probability distribution for <span class="math inline">\(O\)</span> can be factorized into the distribution of <span class="math inline">\(Y\)</span> given <span class="math inline">\(A\)</span> and <span class="math inline">\(W\)</span>, the distribution of <span class="math inline">\(A\)</span> given <span class="math inline">\(W\)</span>, and the distribution of <span class="math inline">\(W\)</span>.</p>
+<p>Traditional methods for estimating <span class="math inline">\(\psi_0\)</span> are usually based on an estimate of <span class="math inline">\(E(Y|A,W)\)</span>, which we call the outcome regression, or are based on an estimate of the probability of being treated given baseline covariates, <span class="math inline">\(P(A=1|W)\)</span> , known as the propensity score (PS).</p>
+<p>Next, we will introduce each estimation method provided in the paper.</p>
+</section>
+<section id="g-computation-estimators" class="level2">
+<h2 class="anchored" data-anchor-id="g-computation-estimators">3.1 G-computation Estimators</h2>
 </section>
 <section id="data-example" class="level2">
 <h2 class="anchored" data-anchor-id="data-example">4. Data example</h2>
@@ -174,10 +200,8 @@ ul.task-list li input[type="checkbox"] {
 <section id="reference" class="level2">
 <h2 class="anchored" data-anchor-id="reference">Reference</h2>
 <ul>
+<li>S. D. Lendle, B. Fireman, and M. J. van der Laan. Targeted maximum likelihood estimation in safety analysis. J. Clin. Epidemiol., 66(8): S91–S98, 2013.</li>
 <li>D. B. Rubin. Estimating causal effects of treatments in randomized and nonrandomized studies. J Educ Psychol, 66(5): 688–701, 1974.</li>
-<li>C.E. Frangakis and D. B. Rubin. Principal stratification in causal inference. Biometrics, 58(1):21–29, 2002.</li>
-<li>P. Ding and J. Lu. Principal stratification analysis using principal scores. Journal of the Royal Statistical Society Series B: Statistical Methodology, 79(3):757–777, 2017.</li>
-<li>Z. Jiang, S. Yang, and P. Ding. Multiply robust estimation of causal effects under principal ignorability. Journal of the Royal Statistical Society Series B: Statistical Methodology, 84(4):1423–1445, 2022.</li>
 </ul>
 </section>
 </div>
