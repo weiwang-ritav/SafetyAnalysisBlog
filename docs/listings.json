@@ -4,6 +4,7 @@
     "items": [
       "/posts/introduction_causal/index.html",
       "/posts/Intercurrent_event/index.html",
+      "/posts/TMLE_safety/index.html",
       "/posts/safety-estimand/index.html"
     ]
   }

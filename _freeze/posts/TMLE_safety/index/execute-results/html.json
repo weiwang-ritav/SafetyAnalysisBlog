@@ -1,0 +1,14 @@
+{
+  "hash": "2cba789323648826c9cdf84cae7606c8",
+  "result": {
+    "markdown": "---\ntitle: \"Introduction for the Paper: Targeted Maximum Likelihood Estimation in Safety Analysis\"\nauthor: \"Yujing Gao\"\ndate: \"2025-09-15\"\ncategories: [safety analysis, Targeted maximum likelihood estimation, causal inference, doubly robust]\n---\n\n\n::: {style=\"text-align: justify;\"}\n\n## 1. Introduction\n\nThe general introduction of estimand framework includes four parts:\n\n-   Trial Objective\nAn **estimand** is a precise description of the treatment effect reflecting the clinical question posed by a given clinical trial objective, via specifying five attributes: Population, Treatment, Endpoint, Population-level Summary, Intercurrent Events.\n\n\n## 2. Causal Parameter and Identifiability\n\n### 2.1 Treatment Policy\n\nThe treatment policy strategy includes all post-randomization data, regardless of the intercurrent events. In this approach, the primary analysis treats the occurrence of intercurrent events as part of the real-world scenario. Thus, data is collected and analyzed as if all patients followed the initial treatment assignment, irrespective of deviations. (Intention to treat - ITT)\n\nExample: A clinical trial where patients switch to a different medication due to adverse effects, but all data (pre- and post-switch) are included in the primary analysis.\n\n\n::: {.cell layout-align=\"center\" paged.print='false'}\n\n:::\n\n\n\n## 3. Estimation\n\n## 4. Data example \n\n## Reference\n\n-   D. B. Rubin. Estimating causal effects of treatments in randomized and nonrandomized studies. J Educ Psychol, 66(5): 688--701, 1974.\n-   C.E. Frangakis and D. B. Rubin. Principal stratification in causal inference. Biometrics, 58(1):21--29, 2002.\n-   P. Ding and J. Lu. Principal stratification analysis using principal scores. Journal of the Royal Statistical Society Series B: Statistical Methodology, 79(3):757--777, 2017.\n-   Z. Jiang, S. Yang, and P. Ding. Multiply robust estimation of causal effects under principal ignorability. Journal of the Royal Statistical Society Series B: Statistical Methodology, 84(4):1423--1445, 2022.\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

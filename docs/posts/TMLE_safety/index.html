@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Yujing Gao">
+<meta name="dcterms.date" content="2025-09-15">
 
-<title>SafetyAnalysisBlog - Safety Analysis Blog</title>
+<title>SafetyAnalysisBlog - Introduction for the Paper: Targeted Maximum Likelihood Estimation in Safety Analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +25,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -61,50 +61,19 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">SafetyAnalysisBlog</span>
     </a>
   </div>
@@ -115,7 +84,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about.html" rel="" target="">
+    <a class="nav-link" href="../../about.html" rel="" target="">
  <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
@@ -138,213 +107,84 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">Safety Analysis Blog</h1>
-                      </div>
+    <div class="quarto-title column-body">
+      <h1 class="title">Introduction for the Paper: Targeted Maximum Likelihood Estimation in Safety Analysis</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">safety analysis</div>
+                <div class="quarto-category">Targeted maximum likelihood estimation</div>
+                <div class="quarto-category">causal inference</div>
+                <div class="quarto-category">doubly robust</div>
+              </div>
+                  </div>
   </div>
     
   
   <div class="quarto-title-meta">
 
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Yujing Gao </p>
+            </div>
+    </div>
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">September 15, 2025</p>
+      </div>
+    </div>
     
       
     </div>
     
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(4)</span></div><div class="category" data-category="Targeted maximum likelihood estimation">Targeted maximum likelihood estimation <span class="quarto-category-count">(1)</span></div><div class="category" data-category="causal inference">causal inference <span class="quarto-category-count">(3)</span></div><div class="category" data-category="doubly robust">doubly robust <span class="quarto-category-count">(1)</span></div><div class="category" data-category="estimand">estimand <span class="quarto-category-count">(1)</span></div><div class="category" data-category="intercurrent event">intercurrent event <span class="quarto-category-count">(1)</span></div><div class="category" data-category="multiple robust">multiple robust <span class="quarto-category-count">(1)</span></div><div class="category" data-category="per-protocol method">per-protocol method <span class="quarto-category-count">(1)</span></div><div class="category" data-category="principal stratification">principal stratification <span class="quarto-category-count">(1)</span></div><div class="category" data-category="safety">safety <span class="quarto-category-count">(1)</span></div><div class="category" data-category="safety analysis">safety analysis <span class="quarto-category-count">(1)</span></div><div class="category" data-category="statistics">statistics <span class="quarto-category-count">(2)</span></div></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
+<div style="text-align: justify;">
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">1. Introduction</h2>
+<p>The general introduction of estimand framework includes four parts:</p>
+<ul>
+<li>Trial Objective An <strong>estimand</strong> is a precise description of the treatment effect reflecting the clinical question posed by a given clinical trial objective, via specifying five attributes: Population, Treatment, Endpoint, Population-level Summary, Intercurrent Events.</li>
+</ul>
+</section>
+<section id="causal-parameter-and-identifiability" class="level2">
+<h2 class="anchored" data-anchor-id="causal-parameter-and-identifiability">2. Causal Parameter and Identifiability</h2>
+<section id="treatment-policy" class="level3">
+<h3 class="anchored" data-anchor-id="treatment-policy">2.1 Treatment Policy</h3>
+<p>The treatment policy strategy includes all post-randomization data, regardless of the intercurrent events. In this approach, the primary analysis treats the occurrence of intercurrent events as part of the real-world scenario. Thus, data is collected and analyzed as if all patients followed the initial treatment assignment, irrespective of deviations. (Intention to treat - ITT)</p>
+<p>Example: A clinical trial where patients switch to a different medication due to adverse effects, but all data (pre- and post-switch) are included in the primary analysis.</p>
+</section>
+</section>
+<section id="estimation" class="level2">
+<h2 class="anchored" data-anchor-id="estimation">3. Estimation</h2>
+</section>
+<section id="data-example" class="level2">
+<h2 class="anchored" data-anchor-id="data-example">4. Data example</h2>
+</section>
+<section id="reference" class="level2">
+<h2 class="anchored" data-anchor-id="reference">Reference</h2>
+<ul>
+<li>D. B. Rubin. Estimating causal effects of treatments in randomized and nonrandomized studies. J Educ Psychol, 66(5): 688–701, 1974.</li>
+<li>C.E. Frangakis and D. B. Rubin. Principal stratification in causal inference. Biometrics, 58(1):21–29, 2002.</li>
+<li>P. Ding and J. Lu. Principal stratification analysis using principal scores. Journal of the Royal Statistical Society Series B: Statistical Methodology, 79(3):757–777, 2017.</li>
+<li>Z. Jiang, S. Yang, and P. Ding. Multiply robust estimation of causal effects under principal ignorability. Journal of the Royal Statistical Society Series B: Statistical Methodology, 84(4):1423–1445, 2022.</li>
+</ul>
+</section>
+</div>
 
 
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="causal inference,statistics" data-listing-date-sort="1758513600000" data-listing-file-modified-sort="1758554822224" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5">
-<div class="thumbnail">
-<p><a href="./posts/introduction_causal/index.html"> <img src="./posts/introduction_causal/causal_dag.png" class="thumbnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/introduction_causal/index.html">
-<h3 class="no-anchor listing-title">
-Basic Introduction for Causal Inference (still working)
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('causal inference'); return false;">
-causal inference
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('statistics'); return false;">
-statistics
-</div>
-</div>
-<a href="./posts/introduction_causal/index.html">
-<div class="listing-description">
-The general introduction of estimand framework includes four parts:
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/introduction_causal/index.html">
-<div class="listing-date">
-Sep 22, 2025
-</div>
-<div class="listing-author">
-Yujing Gao
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="intercurrent event,per-protocol method,causal inference,principal stratification,multiple robust" data-listing-date-sort="1757908800000" data-listing-file-modified-sort="1760924937400" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="35">
-<div class="thumbnail">
-<p><a href="./posts/Intercurrent_event/index.html"> <p class="card-img-top"><img src="posts/Intercurrent_event/stg1.png"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
-<div class="body">
-<a href="./posts/Intercurrent_event/index.html">
-<h3 class="no-anchor listing-title">
-Estimation Methods for Intercurrent Events
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('intercurrent event'); return false;">
-intercurrent event
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('per-protocol method'); return false;">
-per-protocol method
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('causal inference'); return false;">
-causal inference
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('principal stratification'); return false;">
-principal stratification
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('multiple robust'); return false;">
-multiple robust
-</div>
-</div>
-<a href="./posts/Intercurrent_event/index.html">
-<div class="listing-description">
-The general introduction of estimand framework includes four parts:
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/Intercurrent_event/index.html">
-<div class="listing-date">
-Sep 15, 2025
-</div>
-<div class="listing-author">
-Yujing Gao
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="safety analysis,Targeted maximum likelihood estimation,causal inference,doubly robust" data-listing-date-sort="1757908800000" data-listing-file-modified-sort="1760924938954" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
-<div class="thumbnail">
-<p><a href="./posts/TMLE_safety/index.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
-</div>
-<div class="body">
-<a href="./posts/TMLE_safety/index.html">
-<h3 class="no-anchor listing-title">
-Introduction for the Paper: Targeted Maximum Likelihood Estimation in Safety Analysis
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('safety analysis'); return false;">
-safety analysis
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Targeted maximum likelihood estimation'); return false;">
-Targeted maximum likelihood estimation
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('causal inference'); return false;">
-causal inference
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('doubly robust'); return false;">
-doubly robust
-</div>
-</div>
-<a href="./posts/TMLE_safety/index.html">
-<div class="listing-description">
-The general introduction of estimand framework includes four parts:
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/TMLE_safety/index.html">
-<div class="listing-date">
-Sep 15, 2025
-</div>
-<div class="listing-author">
-Yujing Gao
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="safety,statistics,estimand" data-listing-date-sort="1746676800000" data-listing-file-modified-sort="1749133365592" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
-<div class="thumbnail">
-<p><a href="./posts/safety-estimand/index.html"> <img src="./posts/safety-estimand/thumbnail.jpg" class="thumbnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/safety-estimand/index.html">
-<h3 class="no-anchor listing-title">
-Safety Estimand
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('safety'); return false;">
-safety
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('statistics'); return false;">
-statistics
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('estimand'); return false;">
-estimand
-</div>
-</div>
-<a href="./posts/safety-estimand/index.html">
-<div class="listing-description">
-The concept of a safety estimand is gaining attention as researchers increasingly consider intercurrent events in the analysis of clinical trial safety data. In oncology…
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/safety-estimand/index.html">
-<div class="listing-date">
-May 8, 2025
-</div>
-<div class="listing-author">
-Wei Wang
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

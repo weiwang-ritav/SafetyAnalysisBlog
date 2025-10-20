@@ -1,8 +1,8 @@
 ---
-title: "Intercurrent Events"
+title: "Estimation Methods for Intercurrent Events"
 author: "Yujing Gao"
 date: "2025-09-15"
-categories: [intercurrent event, statistics, causal inference]
+categories: [intercurrent event, per-protocol method, causal inference, principal stratification, multiple robust]
 ---
 
 ::: {style="text-align: justify;"}
